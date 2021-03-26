@@ -45,7 +45,7 @@ let urlSchema = new mongoose.Schema({
 let UrlModel = new mongoose.model("URL", urlSchema);
 
 app.post("/api/shorturl/new", async (req, res) => {
-  let url = req.body.url;
+  let url = req.body.URL;
 
   const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
   if (!regex.test(url)) {
