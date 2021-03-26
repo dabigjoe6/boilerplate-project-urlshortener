@@ -24,7 +24,7 @@ const getRandom = () => {
 
 app.use(cors());
 
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use("/public", express.static(`${process.cwd()}/public`));
 
@@ -45,7 +45,7 @@ let urlSchema = new mongoose.Schema({
 let UrlModel = new mongoose.model("URL", urlSchema);
 
 app.post("/api/shorturl/new", async (req, res) => {
-  let url = req.body.URL;
+  let url = req.body.url;
 
   const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
   if (!regex.test(url)) {
